@@ -34,5 +34,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/detail-note-list-detail-item/{id}', [\App\Http\Controllers\API\NoteListController::class, 'detailNoteListDetailItem']);
     Route::delete('/delete-note-list-detail-item/{id}', [\App\Http\Controllers\API\NoteListController::class, 'deleteNoteListDetailItem']);
 
+    // Perubahan Sesuai PDF
+    Route::get('/checklist', [\App\Http\Controllers\API\ChecklistController::class, 'indexChecklist']);
+    Route::post('/checklist', [\App\Http\Controllers\API\ChecklistController::class, 'createChecklist']);
+    Route::delete('/checklist/{id}', [\App\Http\Controllers\API\ChecklistController::class, 'deleteChecklist']);
+
+    Route::get('/checklist/{id}/item', [\App\Http\Controllers\API\ChecklistController::class, 'detailChecklist']);
+    Route::post('/checklist/{id}/item', [\App\Http\Controllers\API\ChecklistController::class, 'createChecklistItem']);
+    Route::get('/checklist/{id}/item/{iditem}', [\App\Http\Controllers\API\ChecklistController::class, 'detailChecklistItem']);
+    Route::put('/checklist/{id}/item/rename/{iditem}', [\App\Http\Controllers\API\ChecklistController::class, 'updateChecklistItem']);
+    Route::put('/checklist/{id}/item/{iditem}', [\App\Http\Controllers\API\ChecklistController::class, 'updateStatusChecklistItem']);
+    Route::delete('/checklist/{id}/item/{iditem}', [\App\Http\Controllers\API\ChecklistController::class, 'deleteChecklistItem']);
+
 });
 
